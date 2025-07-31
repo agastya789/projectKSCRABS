@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pixel-green: #00ff41;
+  --pixel-red: #ff073a;
+  --pixel-yellow: #ffd700;
+  --pixel-blue: #00bfff;
+  --pixel-purple: #da70d6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Pixel Art Styles */
+.pixel-art {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Pixel Text */
+.pixel-text {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+/* Color Classes */
+.text-pixel-green { color: var(--pixel-green); }
+.text-pixel-red { color: var(--pixel-red); }
+.text-pixel-yellow { color: var(--pixel-yellow); }
+.text-pixel-blue { color: var(--pixel-blue); }
+.text-pixel-purple { color: var(--pixel-purple); }
+
+.border-pixel-green { border-color: var(--pixel-green); }
+.border-pixel-red { border-color: var(--pixel-red); }
+.border-pixel-yellow { border-color: var(--pixel-yellow); }
+
+/* CRT Glow Effect */
+.crt-glow {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor;
+  animation: flicker 3s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor,
+      0 0 20px currentColor;
+  }
+  20%, 24%, 55% {
+    opacity: 0.8;
+    text-shadow: none;
+  }
+}
+
+/* Pixel Panel */
+.pixel-panel {
+  background: rgba(0, 20, 0, 0.9);
+  border: 2px solid var(--pixel-green);
+  border-radius: 0;
+  box-shadow: 
+    0 0 10px rgba(0, 255, 65, 0.3),
+    inset 0 0 10px rgba(0, 255, 65, 0.1);
+  position: relative;
+}
+
+.pixel-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 65, 0.03) 2px,
+      rgba(0, 255, 65, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 65, 0.03) 2px,
+      rgba(0, 255, 65, 0.03) 4px
+    );
+  pointer-events: none;
+}
+
+/* Pixel Buttons */
+.pixel-btn {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #333;
+  color: #fff;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pixel-btn:hover {
+  border-color: var(--pixel-green);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  transform: translateY(-1px);
+}
+
+.pixel-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 5px rgba(0, 255, 65, 0.8);
+}
+
+.pixel-btn-primary {
+  border-color: var(--pixel-green);
+  background: rgba(0, 255, 65, 0.1);
+  color: var(--pixel-green);
+}
+
+.pixel-btn-primary:hover {
+  background: rgba(0, 255, 65, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+}
+
+.pixel-btn-secondary {
+  border-color: var(--pixel-red);
+  background: rgba(255, 7, 58, 0.1);
+  color: var(--pixel-red);
+}
+
+.pixel-btn-secondary:hover {
+  background: rgba(255, 7, 58, 0.2);
+  box-shadow: 0 0 15px rgba(255, 7, 58, 0.6);
+}
+
+/* Pixel Input */
+.pixel-input {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #333;
+  color: var(--pixel-green);
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.pixel-input:focus {
+  border-color: var(--pixel-green);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+/* Game Card Animation */
+.game-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.game-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  filter: brightness(1.1);
+}
+
+/* Scanlines Effect */
+@keyframes scanlines {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scanlines::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(
+    transparent 40%,
+    rgba(0, 255, 65, 0.1) 50%,
+    transparent 60%
+  );
+  animation: scanlines 3s linear infinite;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Dark/Light Mode */
+.dark {
+  --bg-primary: #000;
+  --bg-secondary: #111;
+  --text-primary: #fff;
+  --text-secondary: #ccc;
+}
+
+.light {
+  --bg-primary: #f0f0f0;
+  --bg-secondary: #fff;
+  --text-primary: #000;
+  --text-secondary: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pixel-text {
+    font-size: 0.9em;
+  }
+  
+  .pixel-panel {
+    margin: 0.5rem;
+  }
+  
+  .game-card:hover {
+    transform: none;
+  }
+}
+
+/* Loading Animation */
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
