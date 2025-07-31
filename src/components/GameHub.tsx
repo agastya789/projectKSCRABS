@@ -15,6 +15,7 @@ import BrickBreaker from './games/BrickBreaker';
 import ColorMatch from './games/ColorMatch';
 import AlienInvaders from './games/AlienInvaders';
 import FallingBlocks from './games/FallingBlocks';
+import Minesweeper from './games/Minesweeper';
 
 const games: Game[] = [
   {
@@ -86,6 +87,13 @@ const games: Game[] = [
     description: 'Tetris-style puzzle',
     icon: '🟦',
     color: 'from-teal-600 to-teal-800'
+  },
+  {
+    id: 'minesweeper',
+    title: 'Minesweeper',
+    description: "Test your luck",
+    icon: '💣',
+    color: 'from-red-600 to-red-800'
   }
 ];
 
@@ -144,6 +152,8 @@ export default function GameHub({ isDarkMode, toggleDarkMode }: GameHubProps) {
         return <AlienInvaders {...gameProps} />;
       case 'blocks':
         return <FallingBlocks {...gameProps} />;
+      case 'minesweeper':
+        return < Minesweeper {...gameProps}/>
       default:
         return null;
     }
